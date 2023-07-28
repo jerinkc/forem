@@ -134,6 +134,7 @@ const V2EditorImageUpload = ({
           className="screen-reader-only"
           accept="image/*"
           data-max-file-size-mb="25"
+          multiple
         />
       )}
       {uploadingImage ? (
@@ -322,7 +323,9 @@ export const ImageUploader = ({
       payload: { insertionImageUrls: response.links },
     });
 
-    onImageUploadSuccess?.(`![Image description](${response.links})`);
+    const imageSuccessMarkdown = response.links.map( link => `![Image description](${link})` )
+                                               .join("\r\n");
+    onImageUploadSuccess?.(imageSuccessMarkdown);
 
     document.getElementById('upload-success-info').innerText =
       'image upload complete';
