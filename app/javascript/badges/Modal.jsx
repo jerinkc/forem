@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import PropTypes from 'prop-types';
 
-import { Modal } from '@crayons';
+import { Modal as CrayonsModal } from '@crayons';
 
 export function BadgeModal({ badge, onClose }) {
   const { title, description, badge_image } = badge;
@@ -13,7 +13,7 @@ export function BadgeModal({ badge, onClose }) {
   };
 
   return (
-    <Modal showHeader={false} title="">
+    <CrayonsModal showHeader={false} title="">
       <div className="h-100 w-100">
         <div className="badge_details">
           <div className="badge-image-container p-3">
@@ -56,7 +56,7 @@ export function BadgeModal({ badge, onClose }) {
           </div>
         </div>
       </div>
-    </Modal>
+    </CrayonsModal>
   );
 }
 
